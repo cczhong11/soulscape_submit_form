@@ -12,6 +12,8 @@ Minimal Cloudflare Worker that receives a form and writes to Lark Bitable.
 - `BITABLE_APP_TOKEN`
 - `BITABLE_TABLE_ID`
 - `ALLOW_ORIGIN` (optional)
+- `LARK_UPLOAD_PARENT_TYPE` (optional, defaults to `bitable`)
+- `LARK_UPLOAD_PARENT_NODE` (optional, defaults to `BITABLE_APP_TOKEN`)
 
 ## Example
 POST to `https://<your>.workers.dev/submit`.
