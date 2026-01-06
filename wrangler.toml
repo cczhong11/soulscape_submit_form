@@ -1,3 +1,27 @@
 name = "lark-bitable-form"
 main = "src/index.ts"
 compatibility_date = "2025-11-20"
+
+[vars]
+ALLOW_ORIGIN = "https://soulscape-form.pages.dev"
+LARK_APP_ID = "cli_a9c37f7570f89eee"
+BITABLE_TABLE_ID = "tblqK2VoI6OMMbwW"
+APPLICATIONS_TABLE_ID = "tblUCjcFCPXtnOgy"
+VISIONARY_TABLE_ID = "tblk3TvY3L5GWi9r"
+MENTOR_TABLE_ID = "tblwMPafnwaGtuUC"
+MENTOR_TOOLS_TABLE_ID = "tblqK2VoI6OMMbwW"
+
+[observability]
+enabled = true
+head_sampling_rate = 1
+
+[observability.logs]
+enabled = true
+head_sampling_rate = 1
+persist = true
+invocation_logs = true
+
+[observability.traces]
+enabled = false
+persist = true
+head_sampling_rate = 1
