@@ -17,3 +17,6 @@ Minimal Cloudflare Worker that receives a form and writes to Lark Bitable.
 
 ## Example
 POST to `https://<your>.workers.dev/submit`.
+
+
+npx wrangler pages deploy web --project-name soulscape-form

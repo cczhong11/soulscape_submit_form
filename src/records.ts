@@ -28,8 +28,8 @@ export function buildVisionaryFields(
   if (titleRole) visionaryFields["Title"] = titleRole;
   const professionalLink = pickField(fields, ["Professional Link", "professionalLink", "portfolio"]);
   if (professionalLink) visionaryFields["Professional Link"] = professionalLink;
-  const headshot = pickField(fields, ["Headshot", "headshot"]);
-  if (headshot) visionaryFields["Headshot"] = headshot;
+  //const headshot = pickField(fields, ["Headshot", "headshot"]);
+  //if (headshot) visionaryFields["Headshot"] = headshot;
   const roleSelection = pickField(fields, ["Role Selection", "roleSelection"]);
   if (roleSelection) visionaryFields["Role Selection"] = roleSelection;
   const sfAvailability = pickField(fields, ["SF Availability", "sfAvailability"]);
