@@ -2,7 +2,12 @@ import type { Env } from "./env";
 import { detectTrack } from "./fields";
 import { corsHeaders, jsonResponse, parseIncoming } from "./http";
 import { createBitableRecord, getTenantAccessToken, uploadDriveFile } from "./lark";
-import { buildApplicationsFields, buildMentorFields, buildVisionaryFields } from "./records";
+import {
+  buildApplicationsFields,
+  buildCouncilFields,
+  buildMentorFields,
+  buildVisionaryFields,
+} from "./records";
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
@@ -28,6 +33,12 @@ export default {
       const track = detectTrack(fields);
       if (!track) {
         return jsonResponse(env, 400, { ok: false, error: "Missing or invalid track" });
+      }
+      if (track === "Council" && !env.COUNCIL_TABLE_ID) {
+        return jsonResponse(env, 400, {
+          ok: false,
+          error: "Missing COUNCIL_TABLE_ID for Council submissions",
+        });
       }
       if (track === "Visionary") {
         const rawHeadshot = fields.headshot ?? fields.Headshot;
@@ -70,12 +81,19 @@ export default {
           env.VISIONARY_TABLE_ID,
           buildVisionaryFields(applicationRecordId, fields),
         );
-      } else {
+      } else if (track === "Mentor") {
         detailResult = await createBitableRecord(
           env,
           token,
           env.MENTOR_TABLE_ID,
           buildMentorFields(applicationRecordId, fields),
+        );
+      } else {
+        detailResult = await createBitableRecord(
+          env,
+          token,
+          env.COUNCIL_TABLE_ID as string,
+          buildCouncilFields(applicationRecordId, fields),
         );
       }
 

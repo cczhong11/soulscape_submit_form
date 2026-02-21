@@ -69,6 +69,30 @@ export function buildMentorFields(
   return mentorFields;
 }
 
+export function buildCouncilFields(
+  applicationId: string,
+  fields: Record<string, any>,
+): Record<string, any> {
+  const councilFields: Record<string, any> = {
+    "Application ID": applicationId,
+  };
+  const fullName = pickField(fields, ["Full Name", "fullName", "fullname"]);
+  if (fullName) councilFields["Full Name"] = fullName;
+  const role = pickField(fields, ["Current Role & Company", "role", "titleRole", "Title"]);
+  if (role) councilFields["Current Role & Company"] = role;
+  const linkedin = pickField(fields, ["LinkedIn Profile / IMDB Link", "linkedin", "professionalLink"]);
+  if (linkedin) councilFields["LinkedIn Profile / IMDB Link"] = linkedin;
+  const expertise = toStringArray(pickField(fields, ["Area of Expertise", "expertise"]));
+  if (expertise.length > 0) councilFields["Area of Expertise"] = expertise;
+  const contribution = toStringArray(pickField(fields, ["Contribution", "contribution"]));
+  if (contribution.length > 0) councilFields["Contribution"] = contribution;
+  const keynoteTitle = pickField(fields, ["Keynote Title", "keynoteTitle"]);
+  if (keynoteTitle) councilFields["Keynote Title"] = keynoteTitle;
+  const talksLink = pickField(fields, ["Talks Link", "talksLink", "Proud Work Link", "proudWorkLink"]);
+  if (talksLink) councilFields["Talks Link"] = talksLink;
+  return councilFields;
+}
+
 function toUrlField(value: string): { link: string; text: string } {
   const link = value.trim();
   return { link, text: link };

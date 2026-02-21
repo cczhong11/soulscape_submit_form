@@ -5,6 +5,7 @@ export interface Env {
   APPLICATIONS_TABLE_ID: string;
   VISIONARY_TABLE_ID: string;
   MENTOR_TABLE_ID: string;
+  COUNCIL_TABLE_ID?: string;
   ALLOW_ORIGIN?: string;
   LARK_UPLOAD_PARENT_TYPE?: string;
   LARK_UPLOAD_PARENT_NODE?: string;

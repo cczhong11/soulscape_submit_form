@@ -1,4 +1,4 @@
-export type Track = "Visionary" | "Mentor";
+export type Track = "Visionary" | "Mentor" | "Council";
 
 export function pickField(fields: Record<string, any>, keys: string[]): any {
   for (const key of keys) {
@@ -25,6 +25,10 @@ export function detectTrack(fields: Record<string, any>): Track | null {
     const normalized = raw.trim().toLowerCase();
     if (normalized === "visionary") return "Visionary";
     if (normalized === "mentor") return "Mentor";
+    if (normalized === "council") return "Council";
+  }
+  if (pickField(fields, ["fullname", "fullName", "linkedin", "keynoteTitle"])) {
+    return "Council";
   }
   if (pickField(fields, ["Full Name", "fullName", "Role Selection", "roleSelection"])) {
     return "Visionary";

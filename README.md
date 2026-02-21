@@ -16,6 +16,7 @@ Minimal Cloudflare Worker that receives a form and writes to Lark Bitable.
 - `APPLICATIONS_TABLE_ID`
 - `VISIONARY_TABLE_ID`
 - `MENTOR_TABLE_ID`
+- `COUNCIL_TABLE_ID` (required for `track=Council`)
 - `ALLOW_ORIGIN` (optional)
 - `LARK_UPLOAD_PARENT_TYPE` (optional, defaults to `bitable`)
 - `LARK_UPLOAD_PARENT_NODE` (optional, defaults to `BITABLE_APP_TOKEN`)
